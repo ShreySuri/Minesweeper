@@ -24,5 +24,12 @@ def example_cords():
         print("%s,%s" % (x, y))
     return(None)
 
-example = example_cords()
+master_list = []
+for i in range (0, 64):
+    list_i = octal_list(i)
+    tuple_i = tuple(list_i)
+    master_list.append(tuple_i)
+
+
+
         
