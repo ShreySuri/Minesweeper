@@ -5,8 +5,14 @@ def octal_list(x):
     x.pop(0)
     x.pop(0)
     length = len(x)
-    for i in range (0, length):
-        x[i] = int(x[i])
+    if length < 2:
+        value = int(x[0])
+        x.pop(0)
+        x.append(0)
+        x.append(value)
+    else:
+        for i in range (0, length):
+            x[i] = int(x[i])
     return(x)
 
 def example_cords():
@@ -18,4 +24,5 @@ def example_cords():
         print("%s,%s" % (x, y))
     return(None)
 
+example = example_cords()
         
