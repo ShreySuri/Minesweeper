@@ -98,8 +98,13 @@ column_6 = []
 column_7 = []
 column_8 = []
 
-print(master_list)
 
+for i in range (0, 8):
+    sub_list = []
+    for j in range (0, 8):
+        index = 8 * i + j
+        sub_list.append(master_list[index])
+    print(sub_list)
 
 for i in range (0, 64):
     i = octal_tuple(i)
@@ -128,5 +133,3 @@ for i in range (0, 64):
         column_1.append(i)
     
 
-while game == True:
-    
