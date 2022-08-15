@@ -24,6 +24,25 @@ def example_cords():
         print("%s,%s" % (x, y))
     return(None)
 
+def surround(tuple_1):
+    first = tuple_1[0]
+    second = tuple_1[1]
+    surround_list_1 = []
+    surround_list_2 = []
+    for i in range (first - 1, first + 2):
+        for j in range (second - 1, second + 2):
+            surround_list_1.append((i, j))
+
+    for k in range (0, 9):
+        x = surround_list_1[k]
+        first = x[0]
+        second = x[1]
+        if first >= 0 and first < 8 and second >= 0 and second < 8:
+            surround_list_2.append(x)
+
+    surround_list_2.remove(tuple_1)
+    return(surround_list_2)
+
 master_list = []
 for i in range (0, 64):
     i = octal_tuple(i)
