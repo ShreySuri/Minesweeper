@@ -24,6 +24,19 @@ def example_cords():
         print("%s,%s" % (x, y))
     return(None)
 
+master_list = []
+for i in range (0, 64):
+    i = octal_tuple(i)
+    master_list.append(i)
+
+mines = 0
+while mines < 10:
+    x = random.randint(0, 63)
+    if master_list[x] != "M":
+        master_list[x] = "M"
+        mines = mines + 1
+    else:
+        toggle = True
 
 row_1 = []
 row_2 = []
@@ -42,6 +55,8 @@ column_5 = []
 column_6 = []
 column_7 = []
 column_8 = []
+
+
 
 
 for i in range (0, 64):
