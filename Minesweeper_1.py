@@ -39,7 +39,7 @@ def example_cords():
         octal = octal_tuple(decimal)
         x = octal[0] + 1
         y = octal[1] + 1
-        print("(%s, %s) --> %s-%s" % (x, y, x, y))
+        print("(%s, %s) --> %s%s" % (x, y, x, y))
     return(None)
 
 def surround(tuple_1):
@@ -77,7 +77,8 @@ def input_check(x):
     check = False
     for i in range (1, 9):
         for j in range (1, 9):
-            value = "%s-%s" % (i, j)
+            value = "%s%s" % (i, j)
+            value = int(value)
             if value == x:
                 check = True
             else:
@@ -128,6 +129,7 @@ while game == True:
         print("")
         input_1 = input("Enter a co-ordinate. If you would like an example, type 'example'. ")
         input_1 = input_1.lower()
+        print(input_1)
         if input_1 == "example":
             example = example_cords()
         else:
