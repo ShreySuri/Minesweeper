@@ -15,6 +15,18 @@ def octal_tuple(x):
             x[i] = int(x[i])
     return(tuple(x))
 
+def octal_list(x):
+    x = list(oct(x))
+    for i in range (0, 2):
+        x.pop(0)
+    if len(x) < 2:
+        x.append(0)
+        x = x.reverse()
+    else:
+        toggle = True
+
+    return(x)
+
 def octal_to_decimal(tuple_1):
     first = tuple_1[0]
     second = tuple_1[1]
@@ -60,25 +72,18 @@ def format_64(list_64):
         print(string)
     return(None)
 
-def tuple_check(x):
-    y = list(x)
-    if len(y) > 1:
-        y.pop(1)
-        check = False
-        for i in range (0, 64):
-            i = octal_tuple(i)
-            i = list(i)
-            for j in range (0, 2):
-                i[j] = i[j] + 1
-            if i == y:
+
+def input_check(x):
+    check = False
+    for i in range (1, 9):
+        for j in range (1, 9):
+            value = "%s-%s" % (i, j)
+            if value == x:
                 check = True
             else:
-                check = False
-    else:
-        check = False
+                toggle = True
 
     return(check)
-        
     
 
 master_list = []
@@ -119,7 +124,7 @@ format_1 = format_64(master_list)
 game = True
 while game == True:
     input_1 = "None"
-    while tuple_check(input_1) == False:
+    while input_check(input_1) == False:
         print("")
         input_1 = input("Enter a co-ordinate. If you would like an example, type 'example'. ")
         input_1 = input_1.lower()
