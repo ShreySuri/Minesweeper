@@ -64,8 +64,20 @@ while mines < 10:
         toggle = True
 
 for i in range (0, 64):
-    surround_list = surround(octal_tuple(i))
-    length = len(surround_list)
+    if master_list[i] != "M":
+        surround_list = surround(octal_tuple(i))
+        length = len(surround_list)
+        mine_count = 0
+        for j in range (0, length):
+            surround_tuple = surround_list[j]
+            num = octal_to_decimal(surround_tuple)
+            if master_list[num] == "M":
+                mine_count = mine_count + 1
+            else:
+                toggle = False
+        master_list[i] = mine_count
+    else:
+        toggle = True
     
 
 row_1 = []
@@ -86,7 +98,7 @@ column_6 = []
 column_7 = []
 column_8 = []
 
-
+print(master_list)
 
 
 for i in range (0, 64):
