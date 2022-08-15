@@ -49,6 +49,21 @@ def surround(tuple_1):
     surround_list_2.remove(tuple_1)
     return(surround_list_2)
 
+def format_64(list_64):
+    for i in range (0, 8):
+        sub_list = []
+        for j in range (0, 8):
+            index = 8 * i + j
+            value = list_64[index]
+            if value != "M":
+                string_value = str(value)
+            else:
+                string_value = value
+            sub_list.append(string_value)
+        print(sub_list)
+    return(None)
+    
+
 master_list = []
 for i in range (0, 64):
     i = octal_tuple(i)
@@ -78,7 +93,8 @@ for i in range (0, 64):
         master_list[i] = mine_count
     else:
         toggle = True
-    
+
+place_holder = format_64(master_list)    
 
 row_1 = []
 row_2 = []
@@ -99,12 +115,7 @@ column_7 = []
 column_8 = []
 
 
-for i in range (0, 8):
-    sub_list = []
-    for j in range (0, 8):
-        index = 8 * i + j
-        sub_list.append(master_list[index])
-    print(sub_list)
+
 
 for i in range (0, 64):
     i = octal_tuple(i)
