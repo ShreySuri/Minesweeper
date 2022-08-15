@@ -62,16 +62,24 @@ def format_64(list_64):
 
 def tuple_check(x):
     y = list(x)
-    y.pop(1)
-    y = tuple(y)
-    check = False
-    for i in range (0, 64):
-        i = octal_tuple(i)
-        if i == y:
-            check = True
-        else:
-            check = False
-    return(chack)
+    if len(y) > 1:
+        y.pop(1)
+        check = False
+        for i in range (0, 64):
+            i = octal_tuple(i)
+            i = list(i)
+            for j in range (0, 2):
+                i[j] = i[j] + 1
+            if i == y:
+                check = True
+            else:
+                check = False
+    else:
+        check = False
+
+    return(check)
+        
+    
 
 master_list = []
 for i in range (0, 64):
@@ -110,4 +118,13 @@ for i in range (0, 64):
 format_1 = format_64(master_list)
 game = True
 while game == True:
+    input_1 = "None"
+    while tuple_check(input_1) == False:
+        print("")
+        input_1 = input("Enter a co-ordinate. If you would like an example, type 'example'. ")
+        input_1 = input_1.lower()
+        if input_1 == "example":
+            example = example_cords()
+        else:
+            toggle = True
     
