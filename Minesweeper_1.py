@@ -27,7 +27,7 @@ def example_cords():
         octal = octal_tuple(decimal)
         x = octal[0] + 1
         y = octal[1] + 1
-        print("%s,%s" % (x, y))
+        print("(%s, %s) --> %s-%s" % (x, y, x, y))
     return(None)
 
 def surround(tuple_1):
@@ -59,7 +59,19 @@ def format_64(list_64):
         string = "%s|" % string
         print(string)
     return(None)
-    
+
+def tuple_check(x):
+    y = list(x)
+    y.pop(1)
+    y = tuple(y)
+    check = False
+    for i in range (0, 64):
+        i = octal_tuple(i)
+        if i == y:
+            check = True
+        else:
+            check = False
+    return(chack)
 
 master_list = []
 for i in range (0, 64):
@@ -96,3 +108,6 @@ for i in range (0, 64):
     known_list.append(" ")
 
 format_1 = format_64(master_list)
+game = True
+while game == True:
+    
