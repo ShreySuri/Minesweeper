@@ -51,16 +51,13 @@ def surround(tuple_1):
 
 def format_64(list_64):
     for i in range (0, 8):
-        sub_list = []
+        string = "|"
         for j in range (0, 8):
             index = 8 * i + j
             value = list_64[index]
-            if value != "M":
-                string_value = str(value)
-            else:
-                string_value = value
-            sub_list.append(string_value)
-        print(sub_list)
+            string = "%s%s   " % (string, value)
+        string = "%s|" % string
+        print(string)
     return(None)
     
 
@@ -94,3 +91,8 @@ for i in range (0, 64):
     else:
         toggle = True
 
+known_list = []
+for i in range (0, 64):
+    known_list.append(" ")
+
+format_1 = format_64(master_list)
