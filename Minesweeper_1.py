@@ -15,6 +15,12 @@ def octal_tuple(x):
             x[i] = int(x[i])
     return(tuple(x))
 
+def octal_to_decimal(tuple_1):
+    first = tuple_1[0]
+    second = tuple_1[1]
+    return(int(first * 8 + second))
+
+    
 def example_cords():
     for i in range (0, 10):
         decimal = random.randint(0, 64)
@@ -56,6 +62,11 @@ while mines < 10:
         mines = mines + 1
     else:
         toggle = True
+
+for i in range (0, 64):
+    surround_list = surround(octal_tuple(i))
+    length = len(surround_list)
+    
 
 row_1 = []
 row_2 = []
