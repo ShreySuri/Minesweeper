@@ -130,22 +130,6 @@ for i in range (0, 64):
 format_1 = format_64(master_list)
 game = True
 while game == True:
-    input_1 = ["0", "0"]
-    while validate(input_1) == False:
-        print("")
-        input_1 = input("Enter a co-ordinate. If you would like an example, type 'example'. ")
-        input_1 = input_1.lower()
-        if input_1 == "example":
-            example = example_cords()
-        else:
-            input_list = list(input_1)
-
-            if len(input_list) == 3:
-                input_list.pop(1)
-            else:
-                input_list = ["0", "0"]
-
-    print("pass")
-                
+   
                     
     
