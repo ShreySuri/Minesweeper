@@ -72,6 +72,18 @@ def format_64(list_64):
         print(string)
     return(None)
 
+def validate(string):
+    check = False
+    for i in range (1, 9):
+        for j in range (1, 9):
+            value = "%s-%s" % (i, j)
+            if value == string:
+                check = True
+            else:
+                toggle = True
+            
+    return(check)
+
 master_list = []
 for i in range (0, 64):
     i = octal_tuple(i)
@@ -109,6 +121,11 @@ for i in range (0, 64):
 format_1 = format_64(master_list)
 game = True
 while game == True:
+    input_1 = "0-0"
+    while validate(input_1) == False:
+        print("")
+        input_1 = input("Please enter a coordinate. If you would like an example, enter 'example'. ")
+        
    
                     
     
