@@ -143,12 +143,14 @@ while game == True:
             toggle = True
 
     turn = turn + 1
+    
     if turn == 1:
         input_2 = prep(input_1)
         rem = input_2 % 8
         quotient = int((input_2 - rem)/8)
         tuple_1 = (quotient + 1, rem + 1)
         surround_list = surround(tuple_1)
+        surround_list.append(tuple_1)
         length = len(surround_list)
         print(surround_list)
         for i in range (0, length):
