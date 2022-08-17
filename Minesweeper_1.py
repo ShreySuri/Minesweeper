@@ -84,6 +84,15 @@ def validate(string):
             
     return(check)
 
+def prep(string):
+    list_1 = list(string)
+    list_1.pop(1)
+    for i in range (0, 2):
+        x = list_1[i]
+        list_1[i] = int(x) - 1
+    value = list_1[0] * 8 + list_1[1]
+    return(value)
+
 master_list = []
 for i in range (0, 64):
     i = octal_tuple(i)
@@ -120,6 +129,7 @@ for i in range (0, 64):
 
 format_1 = format_64(master_list)
 game = True
+count = 0
 while game == True:
     input_1 = "0-0"
     while validate(input_1) == False:
@@ -130,6 +140,27 @@ while game == True:
             x = example_cords()
         else:
             toggle = True
+
+    num = prep(input_1)
+    x = master_list[num]
+    if x == "M":
+        known_list[num] = x
+        game = False
+        win = False
+    else:
+        known_list[num] = "%s" % x
+        count = count + 1
+
+    if count == 54:
+        game = False
+        
+
+    
+
+    
+    
+
+    
 
     
                     
