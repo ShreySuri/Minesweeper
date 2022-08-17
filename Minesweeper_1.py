@@ -150,10 +150,25 @@ while game == True:
     else:
         known_list[num] = "%s" % x
         count = count + 1
-
+        
+    print("")
+    placeholder = format_64(known_list)
+    
     if count == 54:
         game = False
-        
+        win = True
+    else:
+        toggle = False
+
+
+if win == True:
+    print("")
+    print("You won!")
+else:
+    print("")
+    print("You lost.")
+
+
 
     
 
