@@ -125,7 +125,12 @@ while game == True:
     while validate(input_1) == False:
         print("")
         input_1 = input("Please enter a coordinate. If you would like an example, enter 'example'. ")
-        
-   
+        input_1 = input_1.lower()
+        if input_1 == "example":
+            x = example_cords()
+        else:
+            toggle = True
+
+    
                     
     
