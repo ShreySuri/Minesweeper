@@ -72,27 +72,6 @@ def format_64(list_64):
         print(string)
     return(None)
 
-def validate(list_x):
-    counter = 0
-    for i in range (0, 2):
-        check = False
-        value = list_x[i]
-        for j in range (1, 9):
-            j = str(j)
-            if j == value:
-                check = True
-            else:
-                toggle = True
-        if check == True:
-            counter = counter + 1
-        else:
-            toggle = False
-    if counter == 2:
-        return(True)
-    else:
-        return(False)
-        
-
 master_list = []
 for i in range (0, 64):
     i = octal_tuple(i)
