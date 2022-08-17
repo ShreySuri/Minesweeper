@@ -71,20 +71,6 @@ def format_64(list_64):
         string = "%s|" % string
         print(string)
     return(None)
-
-
-def input_check(x):
-    check = False
-    for i in range (1, 9):
-        for j in range (1, 9):
-            value = "%s%s" % (i, j)
-            value = int(value)
-            if value == x:
-                check = True
-            else:
-                toggle = True
-
-    return(check)
     
 
 master_list = []
@@ -124,8 +110,8 @@ for i in range (0, 64):
 format_1 = format_64(master_list)
 game = True
 while game == True:
-    input_1 = "None"
-    while input_check(input_1) == False:
+    check = False
+    while check == False:
         print("")
         input_1 = input("Enter a co-ordinate. If you would like an example, type 'example'. ")
         input_1 = input_1.lower()
@@ -133,5 +119,5 @@ while game == True:
         if input_1 == "example":
             example = example_cords()
         else:
-            toggle = True
+            input_list = list(input_1)
     
