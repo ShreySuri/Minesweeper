@@ -147,11 +147,22 @@ while game == True:
         input_2 = prep(input_1)
         rem = input_2 % 8
         quotient = int((input_2 - rem)/8)
-        tuple_1 = (quotient, rem)
+        tuple_1 = (quotient + 1, rem + 1)
         surround_list = surround(tuple_1)
-        surround_list.reverse()
-        
-
+        length = len(surround_list)
+        print(surround_list)
+        for i in range (0, length):
+            tuple_1 = surround_list[i]
+            num = 8 * tuple_1[0] + tuple_1[1]
+            x = master_list[num]
+            if x == "M":
+                known_list[num] = x
+            else:
+                known_list[num] = "%s" % x
+                count = count + 1
+    else:
+        toggle = False
+    
         
     num = prep(input_1)
     x = master_list[num]
@@ -170,7 +181,7 @@ while game == True:
         game = False
         win = True
     else:
-        toggle = False
+        toggle = True
 
 
 if win == True:
