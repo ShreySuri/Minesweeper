@@ -93,7 +93,90 @@ def prep(string):
     value = list_1[0] * 8 + list_1[1]
     return(value)
 
+master_list = []
+for i in range (0, 64):
+    i = octal_tuple(i)
+    master_list.append(i)
 
+mines = 0
+while mines < 10:
+    x = random.randint(0, 63)
+    if master_list[x] != "M":
+        master_list[x] = "M"
+        mines = mines + 1
+    else:
+        toggle = True
+
+for i in range (0, 64):
+    if master_list[i] != "M":
+        surround_list = surround(octal_tuple(i))
+        length = len(surround_list)
+        mine_count = 0
+        for j in range (0, length):
+            surround_tuple = surround_list[j]
+            num = octal_to_decimal(surround_tuple)
+            if master_list[num] == "M":
+                mine_count = mine_count + 1
+            else:
+                toggle = False
+        master_list[i] = mine_count
+    else:
+        toggle = True
+
+known_list = []
+for i in range (0, 64):
+    known_list.append(" ")
+
+format_1 = format_64(master_list)
+game = True
+count = 0
+turn = 0
+while game == True:
+    input_1 = "0-0"
+    while validate(input_1) == False:
+        print("")
+        input_1 = input("Please enter a coordinate. If you would like an example, enter 'example'. ")
+        input_1 = input_1.lower()
+        if input_1 == "example":
+            x = example_cords()
+        else:
+            toggle = True
+
+    turn = turn + 1
+    
+    if turn == 1:
+        input_2 = prep(input_1)
+        rem = input_2 % 8
+        quotient = int((input_2 - rem)/8)
+        tuple_1 = (quotient + 1, rem + 1)
+        surround_list = surround(tuple_1)
+        surround_list.append(tuple_1)
+        length = len(surround_list)
+        print(surround_list)
+        for i in range (0, length):
+            tuple_1 = surround_list[i]
+            num = 8 * tuple_1[0] + tuple_1[1]
+            x = master_list[num]
+            if x == "M":
+                known_list[num] = x
+            else:
+                known_list[num] = "%s" % x
+                count = count + 1
+    else:
+        toggle = False
+    
+        
+    num = prep(input_1)
+    x = master_list[num]
+    if x == "M":
+        known_list[num] = x
+        game = False
+        win = False
+    else:
+        known_list[num] = "%s" % x
+        count = count + 1
+        
+    print("")
     placeholder = format_64(known_list)
     
     if count == 54:
