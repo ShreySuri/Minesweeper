@@ -129,8 +129,6 @@ for i in range (0, 64):
 
 format_1 = format_64(master_list)
 game = True
-count = 0
-turn = 0
 while game == True:
     input_1 = "0-0"
     while validate(input_1) == False:
@@ -142,30 +140,6 @@ while game == True:
         else:
             toggle = True
 
-    turn = turn + 1
-    
-    if turn == 1:
-        input_2 = prep(input_1)
-        rem = input_2 % 8
-        quotient = int((input_2 - rem)/8)
-        tuple_1 = (quotient + 1, rem + 1)
-        surround_list = surround(tuple_1)
-        surround_list.append(tuple_1)
-        length = len(surround_list)
-        print(surround_list)
-        for i in range (0, length):
-            tuple_1 = surround_list[i]
-            num = 8 * tuple_1[0] + tuple_1[1]
-            x = master_list[num]
-            if x == "M":
-                known_list[num] = x
-            else:
-                known_list[num] = "%s" % x
-                count = count + 1
-    else:
-        toggle = False
-    
-        
     num = prep(input_1)
     x = master_list[num]
     if x == "M":
