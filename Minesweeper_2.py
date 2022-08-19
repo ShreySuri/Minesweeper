@@ -151,7 +151,25 @@ while game == True:
     else:
         known_list[num] = "%s" % x
         count = count + 1
-        
+
+    rem = num % 8
+    quotient = int((num - rem)/8)
+    tuple_1 = (quotient, rem)
+    surround_list = surround(tuple_1)
+    length = len(surround_list)
+    for i in range (0, length):
+        tuple_2 = surround_list[i]
+        value = tuple_2[0] * 8 + tuple_2[1]
+        x = master_list[value]
+        if x == "M":
+            known_list[value] = x
+        else:
+            known_list[value] = "%s" % x
+            count = count + 1
+
+
+
+    
     print(count)
     placeholder = format_64(known_list)
     
