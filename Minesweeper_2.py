@@ -127,8 +127,11 @@ known_list = []
 for i in range (0, 64):
     known_list.append(" ")
 count = 0
-format_1 = format_64(master_list)
+turn = 1
 game = True
+print("")
+placeholder = format_64(known_list)
+
 while game == True:
     input_1 = "0-0"
     while validate(input_1) == False:
@@ -152,25 +155,41 @@ while game == True:
         known_list[num] = "%s" % x
         count = count + 1
 
-    rem = num % 8
-    quotient = int((num - rem)/8)
-    tuple_1 = (quotient, rem)
-    surround_list = surround(tuple_1)
-    length = len(surround_list)
-    for i in range (0, length):
-        tuple_2 = surround_list[i]
-        value = tuple_2[0] * 8 + tuple_2[1]
-        x = master_list[value]
+    if turn == 1:
+        rem = num % 8
+        quotient = int((num - rem)/8)
+        tuple_1 = (quotient, rem)
+        surround_list = surround(tuple_1)
+        surround_list.append(tuple_1)
+        length = len(surround_list)
+        for i in range (0, length):
+            tuple_2 = surround_list[i]
+            value = tuple_2[0] * 8 + tuple_2[1]
+            x = master_list[value]
+            if x == "M":
+                known_list[value] = x
+            else:
+                known_list[value] = "%s" % x
+                count = count + 1
+    else:
+        num = prep(input_1)
+        x = master_list[num]
         if x == "M":
-            known_list[value] = x
+            known_list[num] = x
+            game = False
+            win = False
+        elif known_list[num] == str(x):
+            toggle = True
         else:
-            known_list[value] = "%s" % x
+            known_list[num] = "%s" % x
             count = count + 1
+
+    turn = turn + 1
 
 
 
     
-    print(count)
+    print("")
     placeholder = format_64(known_list)
     
     if count == 54:
