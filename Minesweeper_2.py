@@ -126,7 +126,7 @@ for i in range (0, 64):
 known_list = []
 for i in range (0, 64):
     known_list.append(" ")
-
+count = 0
 format_1 = format_64(master_list)
 game = True
 while game == True:
@@ -146,11 +146,13 @@ while game == True:
         known_list[num] = x
         game = False
         win = False
+    elif known_list[num] == str(x):
+        toggle = True
     else:
         known_list[num] = "%s" % x
         count = count + 1
         
-    print("")
+    print(count)
     placeholder = format_64(known_list)
     
     if count == 54:
