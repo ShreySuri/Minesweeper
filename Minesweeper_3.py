@@ -127,13 +127,11 @@ def create_master_list():
 
     return(master_list)
 
-master_list = create_master_list()
-
 known_list = []
 for i in range (0, 64):
     known_list.append(" ")
 count = 0
-turn = 1
+turn = 0
 game = True
 print("")
 placeholder = format_64(known_list)
@@ -149,34 +147,17 @@ while game == True:
         else:
             toggle = True
 
-    num = prep(input_1)
-    x = master_list[num]
-    if x == "M":
-        known_list[num] = x
-        game = False
-        win = False
-    elif known_list[num] == str(x):
-        toggle = True
-    else:
-        known_list[num] = "%s" % x
-        count = count + 1
-
+    turn = turn + 1
+    input_1 = prep(input_1)
+    
     if turn == 1:
-        rem = num % 8
-        quotient = int((num - rem)/8)
-        tuple_1 = (quotient, rem)
+        master_list = create_master_list()
+        while master_list(input_1) != 0:
+            master_list = create_master_list()
+
+        tuple_1 = octal_tuple(input_1)
         surround_list = surround(tuple_1)
-        surround_list.append(tuple_1)
-        length = len(surround_list)
-        for i in range (0, length):
-            tuple_2 = surround_list[i]
-            value = tuple_2[0] * 8 + tuple_2[1]
-            x = master_list[value]
-            if x == "M":
-                known_list[value] = x
-            else:
-                known_list[value] = "%s" % x
-                count = count + 1
+        tuple_1.append(surround_list)
     else:
         num = prep(input_1)
         x = master_list[num]
