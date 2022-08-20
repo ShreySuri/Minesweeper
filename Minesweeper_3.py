@@ -1,4 +1,5 @@
 import random
+import time
 
 def octal_tuple(x):
     x = list(oct(x))
@@ -135,8 +136,10 @@ turn = 0
 game = True
 print("")
 placeholder = format_64(known_list)
+start_time = time.strftime("%H:%M:%S")
 
 while game == True:
+    
     input_1 = "0-0"
     while validate(input_1) == False:
         print("")
@@ -186,6 +189,12 @@ while game == True:
     else:
         toggle = True
 
+end_time = date.strftime("%H:%M:%S")
+start_time = start_time.split(":")
+start_value = 3600 * start_time[0] + 60 * start_time[1] + start_time[2]
+end_value = 3600 * end_time[0] + 60 * end_time[1] + end_time[2]
+delta = end_value - start_value
+final_time = prep_time(delta)
 
 if win == True:
     print("")
