@@ -152,29 +152,30 @@ while game == True:
     
     if turn == 1:
         master_list = create_master_list()
-        while master_list(input_1) != 0:
+        while master_list[input_1] != 0:
             master_list = create_master_list()
 
         tuple_1 = octal_tuple(input_1)
         surround_list = surround(tuple_1)
-        tuple_1.append(surround_list)
+        surround_list.append(tuple_1)
+        length = len(surround_list)
+        for i in range (0, length):
+            tuple_2 = surround_list[i]
+            value = 8 * tuple_2[0] + tuple_2[1]
+            x = master_list[value]
+            known_list[value] = "%s" % x
+            count = count + 1
     else:
-        num = prep(input_1)
-        x = master_list[num]
+        x = master_list[input_1]
         if x == "M":
-            known_list[num] = x
+            known_list[input_1] = x
             game = False
             win = False
-        elif known_list[num] == str(x):
+        elif known_list[input_1] == str(x):
             toggle = True
         else:
-            known_list[num] = "%s" % x
+            known_list[input_1] = "%s" % x
             count = count + 1
-
-    turn = turn + 1
-
-
-
     
     print("")
     placeholder = format_64(known_list)
