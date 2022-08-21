@@ -128,6 +128,34 @@ def create_master_list():
 
     return(master_list)
 
+def prep_time(int_1):
+    rem = int_1 * 3600
+    hours = int((int_1 - rem)/3600)
+    int_1 = rem
+    minutes = int_1 * 60
+    hours = int((int_1 - rem)/3600)
+    int_1 = rem
+    seconds = int_1
+    if seconds == 1:
+        sec_title = "second"
+    else:
+        sec_title = "seconds"
+        
+    if minutes == 1:
+        min_title = "minute"
+    else:
+        min_title = "minutes"
+
+    if hours == 0:
+        return("%s %s, and %s %s." % (seconds, sec_title, minutes, min_title))
+    elif hours == 1:
+        return("1 hour, %s %s, and %s %s." % (seconds, sec_title, minutes, min_title))
+    else:
+        return("%s hours, %s %s, and %s %s." % (hours, seconds, sec_title, minutes, min_title))
+        
+    
+
+
 known_list = []
 for i in range (0, 64):
     known_list.append(" ")
@@ -198,7 +226,7 @@ final_time = prep_time(delta)
 
 if win == True:
     print("")
-    print("You won!")
+    print("You won! It took you %s." % final_time)
 else:
     print("")
     print("You lost.")
