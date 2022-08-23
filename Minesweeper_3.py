@@ -230,11 +230,3 @@ if win == True:
 else:
     print("")
     print("You lost.")
-
-
-
-
-
-
-
-
