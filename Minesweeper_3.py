@@ -217,7 +217,7 @@ while game == True:
     else:
         toggle = True
 
-end_time = date.strftime("%H:%M:%S")
+end_time = time.strftime("%H:%M:%S")
 start_time = start_time.split(":")
 start_value = 3600 * start_time[0] + 60 * start_time[1] + start_time[2]
 end_value = 3600 * end_time[0] + 60 * end_time[1] + end_time[2]
@@ -230,3 +230,5 @@ if win == True:
 else:
     print("")
     print("You lost.")
+
+    
